@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="title">Dashboard</h1>
+<div class="columns">
+  <div class="column">
+    <h2 class="subtitle">Inbound Shipments</h2>
+    <table class="table is-fullwidth">
+      <thead>
+        <tr><th>Reference</th><th>Status</th><th>Expected Date</th></tr>
+      </thead>
+      <tbody>
+        {% for s in inbound %}
+        <tr><td>{{ s.reference }}</td><td>{{ s.status }}</td><td>{{ s.expected_date }}</td></tr>
+        {% empty %}
+        <tr><td colspan="3">No inbound shipments.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <div class="column">
+    <h2 class="subtitle">Outbound Shipments</h2>
+    <table class="table is-fullwidth">
+      <thead>
+        <tr><th>Reference</th><th>Status</th><th>Expected Date</th></tr>
+      </thead>
+      <tbody>
+        {% for s in outbound %}
+        <tr><td>{{ s.reference }}</td><td>{{ s.status }}</td><td>{{ s.expected_date }}</td></tr>
+        {% empty %}
+        <tr><td colspan="3">No outbound shipments.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
